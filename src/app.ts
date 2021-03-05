@@ -11,7 +11,7 @@ app.listen(port,()=>{
     console.log('server started');
 });
 
-mongoose.connect('mongodb://localhost:27017/Vayuz')
+mongoose.connect('mongodb+srv://chetanya:Chetanya.321@cluster0.ueeyh.mongodb.net/Vayuz?retryWrites=true&w=majority')
     .then((result)=>{
         app.listen(3000,()=>{
             console.log('server started');

@@ -19,10 +19,23 @@ export class VayuzControllerAction extends DBmodel<UserModel> {
             });
     }
 
-    async userExistByEmail(email:string):Promise<boolean>{
-        return await this.getDBmodel.findOne({email})
+    async userExistByEmail(email:string, password:string):Promise<boolean>{
+        return await this.getDBmodel.findOne({email:email, password:password})
         .then((result)=>{
-            //console.log(result);
+            console.log(result);
+            if(result)
+                return true;
+            else
+                return false;
+        }).catch((err)=>{
+            console.log(err);
+            return false;
+        })
+    }
+    async updateUserByEmail(email:string, imagePath:string, DOB:string):Promise<boolean>{
+        return await this.getDBmodel.updateMany({email:email},{ imagePath:imagePath, DOB:DOB})
+        .then((result)=>{
+            console.log(result);
             if(result)
                 return true;
             else
